@@ -5,24 +5,22 @@ import { useUser } from "../contexts/UserProvider";
 import { Navigate } from "react-router-dom";
 
 export default function Login() {
-
   const [controlState, setControlState] = useState({
     isLoggingIn: false,
     isLoginError: false,
-    isLoginOk: false
+    isLoginOk: false,
   });
 
   const emailRef = useRef();
   const passRef = useRef();
-  const {user, login} = useUser();
+  const { user, login } = useUser();
 
-  async function onLogin () {
-
-    setControlState((prev)=>{
+  async function onLogin() {
+    setControlState((prev) => {
       return {
         ...prev,
-        isLoggingIn: true
-      }
+        isLoggingIn: true,
+      };
     });
 
     const email = emailRef.current.value;
@@ -34,8 +32,8 @@ export default function Login() {
       return {
         isLoggingIn: false,
         isLoginError: !result,
-        isLoginOk: result
-      }
+        isLoginOk: result,
+      };
     });
   }
 
@@ -46,21 +44,34 @@ export default function Login() {
           <tbody>
             <tr>
               <th>Email</th>
-              <td><input type="text" name="email" id="email" ref={emailRef}/> </td>
+              <td>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  ref={emailRef}
+                />{" "}
+              </td>
             </tr>
             <tr>
               <th>Password</th>
-              <td><input type="password" name="password" id="password" ref={passRef}/> </td>
+              <td>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  ref={passRef}
+                />{" "}
+              </td>
             </tr>
           </tbody>
         </table>
-        <button onClick={onLogin} disabled={controlState.isLoggingIn}>Login</button>
+        <button onClick={onLogin} disabled={controlState.isLoggingIn}>
+          Login
+        </button>
         {controlState.isLoginError && <div>Login incorrect</div>}
         {user.isLoggedIn && <div>Login Success</div>}
       </div>
     );
-  else
-    return (
-      <Navigate to="/profile" replace />
-    );
+  else return <Navigate to="/books" replace />;
 }

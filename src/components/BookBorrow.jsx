@@ -106,14 +106,15 @@ export default function BookBorrow() {
             <strong>Status:</strong>{" "}
             <span
               style={{
-                color: result.status === "ACCEPTED" ? "#4caf50" : "#f44336",
+                color:
+                  result.requestStatus === "ACCEPTED" ? "#4caf50" : "#f44336",
                 fontWeight: "bold",
               }}
             >
-              {result.status}
+              {result.requestStatus}
             </span>
           </p>
-          {result.status === "CLOSE-NO-AVAILABLE-BOOK" && (
+          {result.requestStatus === "CLOSE-NO-AVAILABLE-BOOK" && (
             <p style={{ color: "#ff9800" }}>
               This book is currently not available for borrowing.
             </p>
