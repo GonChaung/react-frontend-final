@@ -92,11 +92,12 @@ export default function Books() {
         <h2>Books</h2>
         <div>
           <button
-            onClick={() => navigate("/logout")}
-            style={{ marginLeft: "10px" }}
+            onClick={() => navigate("/borrows")}
+            style={{ marginRight: "10px" }}
           >
-            Logout
+            {user.role === "ADMIN" ? "Borrow Requests" : "My Borrows"}
           </button>
+          <button onClick={() => navigate("/logout")}>Logout</button>
         </div>
       </div>
 

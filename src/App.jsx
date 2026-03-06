@@ -8,6 +8,7 @@ import Logout from "./components/Logout";
 import Books from "./components/Books";
 import { BookDetail } from "./components/BookDetail";
 import BookBorrow from "./components/BookBorrow";
+import BorrowList from "./components/BorrowList";
 
 function App() {
   return (
@@ -45,6 +46,15 @@ function App() {
         element={
           <RequireAuth>
             <BookBorrow />
+          </RequireAuth>
+        }
+      />
+      {/* Borrow request list page (protected) */}
+      <Route
+        path="/borrows"
+        element={
+          <RequireAuth>
+            <BorrowList />
           </RequireAuth>
         }
       />
